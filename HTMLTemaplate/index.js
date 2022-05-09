@@ -76,8 +76,8 @@ $(document).ready(function(){
 
     // click on qty up button
     $qty_up.click(function(e){
-        //console.log(`.qty_input[data-id='${$(this).data("id")}']`);
-        //debugger;
+        //          console.log(`.qty_input[data-id='${$(this).data("id")}']`);
+        //          debugger;
         let $input = $(`.qty_input[data-id='${$(this).data("id")}']`);
         if($input.val() >= 1 && $input.val() <=9){
             $input.val(function(i, oldval){
