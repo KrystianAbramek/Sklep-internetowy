@@ -11,6 +11,8 @@
 
     //Product object
     $product = new Product($db);
-    $product -> getData();
+    $product -> getDataTopSale();
+    $product -> getDataSpecialPrice();
+    $product -> getDataNewPhones();
 
 ?>

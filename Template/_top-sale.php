@@ -1,6 +1,7 @@
 <!-- Top Sale -->
 <?php
-    $product_shuffle = $product -> getData();
+    $product_shuffle = $product -> getDataTopSale();
+    shuffle($product_shuffle);
 ?>
 <section id="top-sale">
                 <div class="container py-5">
@@ -11,7 +12,7 @@
                         <?php foreach($product_shuffle as $item){?>
                         <div class="item py-2">  
                             <div class="product font-rale">
-                                <a href="#"><img src="<?php echo $item['item_image'] ?? "./assets/products/i.png" ?>" alt="product" class="img-fluid"></a>
+                                <a href="<?php printf('%s?item_id=%s', 'productTopSale.php',  $item['item_id']); ?>"><img src="<?php echo $item['item_image'] ?? "./assets/products/i.png" ?>" alt="product" class="img-fluid"></a>
                                 <div class="text-center">
                                     <h6><?php echo $item['item_name'] ?? "Unknown"; ?></h6>
                                     <div class="rating text-warning font-size-12">
