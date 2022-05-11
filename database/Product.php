@@ -12,8 +12,8 @@ class Product
     }
 
     // fetch product data using getDataTopSale Method
-    public function getDataTopSale($table = 'product'){
-        $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_destination = 'top-sale'");
+    public function getDataTopSale(){
+        $result = $this->db->con->query("SELECT * FROM product WHERE item_destination = 'top-sale'");
 
         $resultArray = array();
 
@@ -26,8 +26,8 @@ class Product
     }
 
     // fetch product data using getDataSpecialPrice Method
-    public function getDataSpecialPrice($table = 'product'){
-        $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_destination = 'special-price'");
+    public function getDataSpecialPrice(){
+        $result = $this->db->con->query("SELECT * FROM product WHERE item_destination = 'special-price'");
 
         $resultArray = array();
 
@@ -40,8 +40,8 @@ class Product
     }
 
     // fetch product data using getDataNewPhones Method
-    public function getDataNewPhones($table = 'product'){
-        $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_destination = 'new-phone'");
+    public function getDataNewPhones(){
+        $result = $this->db->con->query("SELECT * FROM product WHERE item_destination = 'new-phone'");
 
         $resultArray = array();
 
