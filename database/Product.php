@@ -27,6 +27,20 @@ class Product
 
         return $resultArray;
     }
+    
+    public function getDataToCart(){
+
+        $result = $this->db->con->query("SELECT * FROM cart");
+
+        $resultArray = array();
+
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+    }
 
     // fetch product data using getDataTopSale Method
     public function getDataTopSale(){
@@ -42,7 +56,7 @@ class Product
     public function getDataNewPhones(){
         return $this -> getDataByItemDestination('new-phone');
     }
-
+    
     // get product using item id
     public function getProduct($item_id = null, $table= 'product'){
         if (isset($item_id)){

@@ -7,7 +7,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_POST['new_phones_submit'])){
             //call method addToCart
-            $cart->addToCart($_POST['user_id'], $_POST['item_id']);
+            $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
         }
     }
 ?>

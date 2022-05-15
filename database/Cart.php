@@ -48,17 +48,15 @@ class Cart
         }
     }
 
-    public function getDataToCart(){
-
-        $result = $this->db->con->query("SELECT * FROM cart");
-
-        $resultArray = array();
-
-        // fetch product data one by one
-        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $resultArray[] = $item;
+    // calculate sub total
+    public function getSum($arr){
+        if(isset($arr)){
+            $sum = 0;
+            foreach ($arr as $item){
+                $sum += floatval($item[0]);
+            }
+            return sprintf('%.2f' , $sum);
         }
-
-        return $resultArray;
     }
+
 }

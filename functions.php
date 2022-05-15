@@ -12,10 +12,9 @@
     //DBController object
     $db = new DBController();
 
-    //Product object
+    // Product object
     $product = new Product($db);
+    $product_shuffle = $product->getDataToCart();
 
-    //Cart object
-    $cart = new Cart($db);
-
-?>
+    // Cart object
+    $Cart = new Cart($db);
