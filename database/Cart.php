@@ -48,4 +48,17 @@ class Cart
         }
     }
 
+    public function getDataToCart(){
+
+        $result = $this->db->con->query("SELECT * FROM cart");
+
+        $resultArray = array();
+
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+    }
 }
