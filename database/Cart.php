@@ -11,7 +11,7 @@ class Cart
         $this->db = $db;
     }
 
-    // insert into cart table
+    //insert into cart table
     public  function insertIntoCart($params = null, $table = "cart"){
         if ($this->db->con != null){
             if ($params != null){
@@ -31,7 +31,7 @@ class Cart
         }
     }
 
-    // to get user_id and item_id and insert into cart table
+    //to get user_id and item_id and insert into cart table
     public  function addToCart($userid, $itemid){
         if (isset($userid) && isset($itemid)){
             $params = array(
@@ -48,7 +48,7 @@ class Cart
         }
     }
 
-   // delete cart item using cart item id
+   //delete cart item using cart item id
    public function deleteCart($item_id = null, $table = 'cart'){
     if($item_id != null){
         $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
@@ -59,7 +59,7 @@ class Cart
     }
 }
 
-    // calculate sub total
+    //calculate sub total
     public function getSum($arr){
         if(isset($arr)){
             $sum = 0;
@@ -67,6 +67,16 @@ class Cart
                 $sum += floatval($item[0]);
             }
             return sprintf('%.2f' , $sum);
+        }
+    }
+
+    //get item_id of shopping cart list
+    public function getCartId($cartArray = null, $key = "item_id"){
+        if ($cartArray != null){
+            $cart_id = array_map(function ($value) use($key){
+                return $value[$key];
+            }, $cartArray);
+            return $cart_id;
         }
     }
 
