@@ -6,8 +6,8 @@
     //require Product Class
     require('database/Product.php');
 
-    //require Product Class
-    require('database/Cart.php');
+    //require Cart Class
+    require('database/Cart.php');   
 
     //DBController object
     $db = new DBController();
