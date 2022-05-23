@@ -10,21 +10,23 @@
         // Check if username is empty
         if(empty(trim($_POST["username"]))){
             $username_error = "Please enter username.";
-        } else{
+        } 
+        else{
             $username = trim($_POST["username"]);
         }
         
         // Check if password is empty
         if(empty(trim($_POST["password"]))){
             $password_error = "Please enter your password.";
-        } else{
+        } 
+        else{
             $password = trim($_POST["password"]);
         }
 
         // Validate credentials
         if(empty($username_error) && empty($password_error)){
 
-            $query = "SELECT user_id, username, password FROM users WHERE username = ?";
+            $query = "SELECT user_id, username, password, role FROM users WHERE username = ?";
             
             if($result = $mysqli->prepare($query)){
 
@@ -39,22 +41,40 @@
                     
 
                     if($result->num_rows == 1){                    
-                        $result->bind_result($id, $username, $hashed_password);
+                        $result->bind_result($id, $username, $hashed_password, $role);
 
                         if($result->fetch()){
 
                             if(password_verify($password, $hashed_password)){
-                                header("location: index.php");
+                                if($role == 'root'){
+                                    header("location: root_panel.php");
+
+                                }                            
+                                elseif($role == 'admin'){
+                                    header("location: admin_panel.php");
+
+                                }
+                                elseif($role == 'customer'){
+                                    header("location: index.php");
+
+                                }
+                                else{
+                                    $login_error = "Oops! Something went wrong. Please try again later.";
+
+                                }
                                 
-                            } else{
+                            } 
+                            else{
                                 $login_error = "Invalid username or password.";
+
                             }
                         }
                     } else{
                         $login_error = "Invalid username or password.";
 
                     }
-                } else{
+                } else
+                {
                     echo "Oops! Something went wrong. Please try again later.";
                 }
 

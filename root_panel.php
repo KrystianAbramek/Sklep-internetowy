@@ -2,43 +2,25 @@
 
     $mysqli = new mysqli('localhost', 'root', '', 'shopee'); 
 
-    $username = $password = $confirm_password = "";
-    $username_error = $password_error = $confirm_password_error = "";
+    $first_name = $last_name = $password = $confirm_password = "";
+    $first_name_error = $last_name_error = $password_error = $confirm_password_error = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-        // Validate username
-        if(empty(trim($_POST["username"]))){
-            $username_error = "Please enter a username.";
+        // Validate first name
+        if(empty(trim($_POST["first_name"]))){
+            $first_name_error = "Please enter a first name.";
         }  
-        elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-            $username_error = "Username can only contain letters, numbers, and underscores.";
-        } 
         else{
-            $query = "SELECT user_id FROM users WHERE username = ?";
-            
-            if($result = $mysqli->prepare($query)){
-                $result->bind_param("s", $param_username);
-                
-                // Set parameters
-                $param_username = trim($_POST["username"]);
-                
-                if($result->execute()){
-                    $result->store_result();
-                    
-                    if($result->num_rows == 1){
-                        $username_error = "This username is already taken.";
-                    } 
-                    else{
-                        $username = trim($_POST["username"]);
-                    }
-                } else{
-                    echo "Oops! Something went wrong. Please try again later.";
-                }
-    
-                // Close statement
-                $result->close();
-            }
+            $first_name = trim($_POST["first_name"]);
+        }
+
+        // Validate last name
+        if(empty(trim($_POST["last_name"]))){
+            $last_name_error = "Please enter a last name.";
+        }  
+        else{
+            $last_name = trim($_POST["last_name"]);
         }
 
         // Validate password
@@ -61,10 +43,23 @@
             }
         }
 
-        if(empty($username_error) && empty($password_error) && empty($confirm_password_error)){
-            
+        if(empty($first_name_error) && empty($last_name_error) && empty($password_error) && empty($confirm_password_error)){
+
             // Prepare query
-            $query = "INSERT INTO users (username, password, role) VALUES (?, ?, 'customer')";
+            $query = "SELECT user_id FROM users ORDER BY user_id DESC LIMIT 1";
+
+            // create unique username
+            $result = $mysqli -> query($query);
+            while ($rows = $result->fetch_array()){
+                $last_id = $rows['user_id'];
+            }
+
+            $last_id += 1;
+            $random_number = rand(10,99);
+            $username = $first_name . "_" . $last_name . $last_id . $random_number;
+
+            // Prepare query
+            $query = "INSERT INTO users (username, password, role) VALUES (?, ?, 'admin')";
             
             if($result = $mysqli->prepare($query)){
                 $result->bind_param("ss", $param_username, $param_password);
@@ -90,14 +85,20 @@
     // include header.php file
     include ('header.php');
 ?>
+    <h1 style="text-align: center;">ROOT PANEL</h1>
     <div class="register">
-        <h2>Sign Up</h2>
+        <h2>Sign Up Admin Account </h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_error; ?></span>
+                <label>First name</label>
+                <input type="text" name="first_name" class="form-control <?php echo (!empty($first_name_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $first_name; ?>">
+                <span class="invalid-feedback"><?php echo $first_name_error; ?></span>
+            </div>    
+            <div class="form-group">
+                <label>Last name</label>
+                <input type="text" name="last_name" class="form-control <?php echo (!empty($last_name_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $last_name; ?>">
+                <span class="invalid-feedback"><?php echo $last_name_error; ?></span>
             </div>    
             <div class="form-group">
                 <label>Password</label>

@@ -18,7 +18,6 @@
     <!-- Custom CSS file -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./HTMLTemplate/style.css">
-    <link rel="stylesheet" href="./HTMLTemplate/style2.css">
 
     <?php
             //require functions.php file
