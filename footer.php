@@ -2,7 +2,7 @@
 <!-- !start #main-site -->
 
 <!-- start #footer -->
-<footer id="footer" class="bg-dark text-white py-5">
+<footer id="footer" class="bg-dark text-white py-5" style="float: left; width: 100%">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-12">
@@ -41,7 +41,7 @@
         </div>
     </div>
 </footer>
-<div class="copyright text-center bg-dark text-white py-2">
+<div class="copyright text-center bg-dark text-white py-2" style="float: left; width: 100%">
     <p class="font-rale font-size-14">&copy; Copyrights 2020. Desing By <a href="#" class="color-second">Daily Tuition</a></p>
 </div>
 <!-- !start #footer -->

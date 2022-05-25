@@ -1,4 +1,5 @@
 <h1 style="text-align: center;">ADMIN PANEL</h1>
+<div class="logout"><a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a></div>
     <div class="addNewItem">
         <h2>Add new item to shop</h2>
         <p>Please fill this form to add new product.</p>

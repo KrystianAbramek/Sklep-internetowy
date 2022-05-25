@@ -1,5 +1,12 @@
 <?php
 
+    session_start();
+    
+    if(!isset($_SESSION["root_session"]) || $_SESSION["root_session"] !== true){
+        header("location: login.php");
+        exit;
+    }
+
     $mysqli = new mysqli('localhost', 'root', '', 'shopee'); 
 
     $first_name = $last_name = $password = $confirm_password = "";
@@ -86,6 +93,7 @@
     include ('header.php');
 ?>
     <h1 style="text-align: center;">ROOT PANEL</h1>
+    <div class="logout"><a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a></div>
     <div class="register">
         <h2>Sign Up Admin Account </h2>
         <p>Please fill this form to create an account.</p>
@@ -114,7 +122,6 @@
                 <input type="submit" class="btn btn-success font-size-18" value="Submit">
                 <input type="reset" class="btn btn-danger font-size-18" value="Reset">
             </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
     </div>
 <?php

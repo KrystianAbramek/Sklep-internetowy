@@ -1,5 +1,18 @@
 <?php
 
+    session_start();
+
+    if(isset($_SESSION["root_session"]) && $_SESSION["root_session"] === true){
+        header("location: root_panel.php");
+        exit;
+    }
+
+    if(isset($_SESSION["admin_session"]) && $_SESSION["admin_session"] === true){
+        header("location: admin_panel.php");
+        exit;
+    }
+
+
     $mysqli = new mysqli('localhost', 'root', '', 'shopee'); 
 
     $username = $password = $confirm_password = "";
@@ -47,10 +60,24 @@
 
                             if(password_verify($password, $hashed_password)){
                                 if($role == 'root'){
+
+                                    session_start();
+
+                                    $_SESSION["root_session"] = true;
+                                    $_SESSION["id"] = $id;
+                                    $_SESSION["username"] = $username;                            
+
                                     header("location: root_panel.php");
 
                                 }                            
-                                elseif($role == 'admin'){
+                                elseif($role == 'admin'){       
+                                    
+                                    session_start();
+
+                                    $_SESSION["admin_session"] = true;
+                                    $_SESSION["id"] = $id;
+                                    $_SESSION["username"] = $username;   
+
                                     header("location: admin_panel.php");
 
                                 }

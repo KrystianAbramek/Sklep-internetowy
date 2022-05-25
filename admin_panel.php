@@ -1,5 +1,12 @@
 <?php
 
+    session_start();
+        
+    if(!isset($_SESSION["admin_session"]) || $_SESSION["admin_session"] !== true){
+        header("location: login.php");
+        exit;
+    }
+
     $mysqli = new mysqli('localhost', 'root', '', 'shopee'); 
 
     $addOrNot = 0;

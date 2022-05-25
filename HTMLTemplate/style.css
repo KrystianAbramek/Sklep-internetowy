@@ -131,4 +131,9 @@ button, button:focus {
   padding-left: 100px;
 }
 
+.logout {
+  float: right;
+  padding-right: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
