@@ -8,5 +8,8 @@
     "start": "sass ./sass/style.scss style.css --watch"
   },
   "author": "Krystian Abramek",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap-table": "^1.20.2"
+  }
 }

@@ -3,7 +3,8 @@
 /*      global classes      */
 button, button:focus {
   outline: none !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 /*      typography classes      */
@@ -64,34 +65,46 @@ button, button:focus {
 #top-sale .owl-carousel .item .product a {
   overflow: hidden;
 }
+
 #top-sale .owl-carousel .item .product img {
-  transition: transform 0.5s ease;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease;
 }
+
 #top-sale .owl-carousel .item .product img:hover {
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
+
 #top-sale .owl-carousel .owl-nav button {
   position: absolute;
   top: 30%;
   outline: none;
 }
+
 #top-sale .owl-carousel .owl-nav button.owl-prev {
   left: 0;
   font-style: 35px;
   color: #003859;
 }
+
 #top-sale .owl-carousel .owl-nav button.owl-prev span,
 #top-sale .owl-carousel .owl-nav button.owl-next span {
   font-size: 35px;
   color: #003859;
   padding: 0 1rem;
 }
+
 #top-sale .owl-carousel .owl-nav button.owl-prev span {
   margin-left: -4rem;
 }
+
 #top-sale .owl-carousel .owl-nav button.owl-next {
   right: 0;
 }
+
 #top-sale .owl-carousel .owl-nav button.owl-next span {
   margin-right: -4rem;
 }
@@ -147,27 +160,45 @@ button, button:focus {
 .addItemsButton {
   width: 100%;
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 36px;
 }
 
 .editItemsButton {
   width: 100%;
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 36px;
 }
 
 .removeItemsButton {
   width: 100%;
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 36px;
 }
 
@@ -175,9 +206,15 @@ button, button:focus {
   padding-left: 210px;
   float: left;
   width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .removeItem {
@@ -190,5 +227,4 @@ button, button:focus {
 #removeId {
   width: 80px;
 }
-
 /*# sourceMappingURL=style.css.map */
