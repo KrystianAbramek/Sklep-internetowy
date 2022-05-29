@@ -49,21 +49,9 @@
 }
 
 .productTable{
-    padding-left: 210px;
     float: left;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.removeItem{
-    padding-top: 50px;
-    padding-bottom: 50px;
-    width: 800px;
-    padding-left: 210px;
-}
-
-#removeId{
-    width: 80px;
 }

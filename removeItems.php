@@ -4,19 +4,17 @@
 
     $removedOrNot = 0;
     $remove_item_id = "";
-    $remove_item_id_error = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-        if(empty(trim($_POST["remove_item_id"]))){
-            $remove_item_id_error = "Please enter a item id.";
-        }  
-        else{
-            $remove_item_id = trim($_POST["remove_item_id"]);
+        foreach($_POST as $key => $value){ 
+            $remove_item_id = $key;
         }
 
-        if(empty($remove_item_id_error)){
-            // Prepare query
+        if(empty($remove_item_id)){
+            echo "Oops! Something went wrong. Please try again later.";
+        }  
+        else{
             $query = "DELETE FROM product WHERE item_id=?";
             
             if($result = $mysqli->prepare($query)){
@@ -31,7 +29,6 @@
                 }
                 $result->close();
             }
-
         }
     }
 
