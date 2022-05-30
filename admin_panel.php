@@ -20,10 +20,7 @@
         <a href="addNewItems.php" class="btn btn-outline-dark ml-3 addItemsButton">Add new product</a>
     </div>
     <div class="adminPanel">
-        <a href="editItems.php" class="btn btn-outline-primary ml-3 editItemsButton">Edit product parameters</a>
-    </div>
-    <div class="adminPanel">
-        <a href="removeItems.php" class="btn btn-outline-success ml-3 removeItemsButton">Remove products</a>
+        <a href="removeItems.php" class="btn btn-outline-success ml-3 productListButton">Products list</a>
     </div>
 
 <?php

@@ -50,7 +50,7 @@
     }
     else
     {
-        include('./Template/_removeItems.php');
+        include('./Template/_itemList.php');
     }
 
     // include footer.php file

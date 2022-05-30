@@ -14,6 +14,7 @@
                 <th>Item price</th>
                 <th>Item register time</th>
                 <th>Item destiny</th>
+                <th>Edit item parameters</th>
                 <th>Remove item</th>
             </tr>
         </thead>
@@ -33,7 +34,21 @@
         echo "<td>" . $value['item_name'] . "</td>";
         echo "<td>" . $value['item_price'] . "</td>";
         echo "<td>" . $value['item_register'] . "</td>";
-        echo "<td>" . $value['item_destination'] . "</td>";
+        echo "<td><span class='badge badge-pill badge-"; 
+        if($value['item_destination'] == "top-sale"){
+            echo "success";
+        }
+        elseif($value['item_destination'] == "special-price"){
+            echo "warning";
+        } 
+        elseif($value['item_destination'] == "new-phone"){
+            echo "dark";
+        }
+        else{
+            echo "secondary";
+        } 
+        echo " font-size-20'>" . $value['item_destination'] . "</span></td>";
+        echo "<td><form action='editItem.php' method='post'><input style='width: 26.5%;' type='submit' class='btn btn-primary font-size-18' name='" . $value['item_id'] . "' value='Edit'></form></td>";
         echo "<td><form method='post'><input type='submit' class='btn btn-danger font-size-18' name='" . $value['item_id'] . "' value='Remove'></form></td>";
         echo "</tr>";
     }
